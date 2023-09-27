@@ -14,7 +14,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 		setEtapaAtual(etapaAtual+1)
 	}
 	
-	//Essa função está aqui dentro, justamente para saber o que é o aoEnviare e o validarCPF
+	//Essa função está aqui dentro, justamente para saber o que é o aoEnviar e e o validarCPF
 	function formularioAtual(etapa) {
 		//Basicamente isso aqui é um menu condicional por numero
 		switch (etapa) {
@@ -23,7 +23,7 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 			case 1:
 				return <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF}/>;
 			case 2:
-				return <DadosEntrega />;
+				return <DadosEntrega aoEnviar={aoEnviar} />;
 			default:
 				return <Typography>Erro</Typography>;
 		}

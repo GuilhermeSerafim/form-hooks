@@ -11,6 +11,7 @@ function DadosUsuario({ aoEnviar }) {
 				id="email"
 				label="Email"
 				type="email"
+                required
 				variant="outlined"
 				margin="normal"
 				fullWidth
@@ -19,6 +20,7 @@ function DadosUsuario({ aoEnviar }) {
 				id="senha"
 				label="Senha"
 				type="password"
+                required
 				variant="outlined"
 				margin="normal"
 				fullWidth
