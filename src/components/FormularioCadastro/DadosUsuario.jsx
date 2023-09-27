@@ -1,9 +1,12 @@
 import { Button, TextField } from "@material-ui/core";
 import React from "react";
 
-function DadosUsuario() {
+function DadosUsuario({ aoEnviar }) {
 	return (
-		<form>
+		<form onSubmit={(event) => {
+            event.preventDefault();
+            aoEnviar(); //Vamos passar as informações aqui ainda
+        }}>
 			<TextField
 				id="email"
 				label="Email"

@@ -8,16 +8,20 @@ import DadosEntrega from "./DadosEntrega";
 
 //Esse formulario de cadastro que vai controlar os dados, logo jogamos os dados para outro componente
 function FormularioCadastro({ aoEnviar, validarCPF }) {
-	const [etapaAtual, setEtapaAtual] = useState(1); //Por enquanto está estática
+	const [etapaAtual, setEtapaAtual] = useState(0); //Por enquanto está estática
 
+	function proximo(){
+		setEtapaAtual(etapaAtual+1)
+	}
+	
 	//Essa função está aqui dentro, justamente para saber o que é o aoEnviare e o validarCPF
 	function formularioAtual(etapa) {
 		//Basicamente isso aqui é um menu condicional por numero
 		switch (etapa) {
 			case 0:
-				return <DadosUsuario />;
+				return <DadosUsuario aoEnviar={proximo} />;
 			case 1:
-				return <DadosPessoais aoEnviar={aoEnviar} validarCPF={validarCPF}/>;
+				return <DadosPessoais aoEnviar={proximo} validarCPF={validarCPF}/>;
 			case 2:
 				return <DadosEntrega />;
 			default:
