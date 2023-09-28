@@ -6,7 +6,7 @@ import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
 import PaginaDeAgradecimento from "./PaginaDeAgradecimento";
 
 //Esse formulario de cadastro que vai controlar os dados, logo jogamos os dados para outro componente
-function FormularioCadastro({ aoEnviar, validacoes }) {
+function FormularioCadastro({ aoEnviar }) {
 	const [etapaAtual, setEtapaAtual] = useState(0); //Por enquanto está estática
 	const [dadosColetados, setDados] = useState({});
 	useEffect(() => {
@@ -19,9 +19,9 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
 
 	const formularios = [
 		//Todos os dados do form recebem as validações
-		<DadosUsuario aoEnviar={coletarDados} validacoes={validacoes} />,
-		<DadosPessoais aoEnviar={coletarDados} validacoes={validacoes}  />,
-		<DadosEntrega aoEnviar={coletarDados} validacoes={validacoes} />,
+		<DadosUsuario aoEnviar={coletarDados} />,
+		<DadosPessoais aoEnviar={coletarDados} />,
+		<DadosEntrega aoEnviar={coletarDados} />,
 		<PaginaDeAgradecimento />,
 	];
 

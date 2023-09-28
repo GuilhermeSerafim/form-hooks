@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     backgroundColor: '#fff', // Cor do papel
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)', // Sombra do papel
+    animation: '$float 2s infinite', // Aplicar a animação de flutuação
   },
   heading: {
     fontSize: '24px',
@@ -29,6 +30,17 @@ const useStyles = makeStyles((theme) => ({
   message: {
     fontSize: '16px',
     color: '#555', // Cor do texto
+  },
+  '@keyframes float': { // Definir a animação de flutuação
+    '0%': {
+      transform: 'translateY(0)',
+    },
+    '50%': {
+      transform: 'translateY(-10px)', // Mova para cima
+    },
+    '100%': {
+      transform: 'translateY(0)',
+    },
   },
 }));
 
