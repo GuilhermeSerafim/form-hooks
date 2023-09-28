@@ -11,7 +11,8 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 	const [dadosColetados, setDados] = useState({});
 	useEffect(() => {
 		if (etapaAtual === formularios.length - 1) {
-			//Não entendi o -1
+			//O ``formularios.length`` é para somar todas os elementos do array
+			//O -1 é para verificar a etapa atual do array (porque eles começam com 0 (1 a mais))
 			aoEnviar(dadosColetados);
 		}
 	});
