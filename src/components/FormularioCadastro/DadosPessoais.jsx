@@ -9,12 +9,13 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 	const [novidades, setNovidades] = useState(false);
 	const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
 
-  function validarCampos(event) {
-    const {name, value} = event.target;
-    const novoEstado = {...erros}
-    novoEstado[name] = validacoes[name](value);
-    setErros(novoEstado);
-  }
+	//Função versátil
+	function validarCampos(event) {
+		const { name, value } = event.target;
+		const novoEstado = { ...erros };
+		novoEstado[name] = validacoes[name](value);
+		setErros(novoEstado);
+	}
 
 	return (
 		<form
@@ -54,7 +55,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 				error={!erros.cpf.valido}
 				helperText={erros.cpf.texto}
 				id="CPF"
-        name="cpf"
+				name="cpf"
 				label="CPF"
 				variant="outlined"
 				margin="normal"

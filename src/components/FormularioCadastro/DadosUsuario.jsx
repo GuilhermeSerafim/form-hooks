@@ -2,9 +2,17 @@ import { Button, TextField } from "@material-ui/core";
 import React from "react";
 import { useState } from "react";
 
-function DadosUsuario({ aoEnviar }) {
+function DadosUsuario({ aoEnviar, validacoes }) {
 	const [email, setEmail] = useState("");
 	const [senha, setSenha] = useState("");
+	const [erros, setErros] = useState({ senha: { valido: true, texto: "" } });
+
+	function validarCampos(event) {
+		const { name, value } = event.target;
+		const novoEstado = { ...erros };
+		novoEstado[name] = validacoes[name](value);
+		setErros(novoEstado);
+	}
 	return (
 		<form
 			onSubmit={(event) => {
@@ -18,6 +26,7 @@ function DadosUsuario({ aoEnviar }) {
 					setEmail(event.target.value);
 				}}
 				id="email"
+				name="email"
 				label="Email"
 				type="email"
 				required
@@ -30,7 +39,11 @@ function DadosUsuario({ aoEnviar }) {
 				onChange={(event) => {
 					setSenha(event.target.value);
 				}}
+				onBlur={validarCampos}
+				error={!erros.senha.valido}
+				helperText={erros.senha.texto}
 				id="senha"
+				name="senha"
 				label="Senha"
 				type="password"
 				required

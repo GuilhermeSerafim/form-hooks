@@ -18,6 +18,7 @@ function FormularioCadastro({ aoEnviar, validacoes }) {
 	});
 
 	const formularios = [
+		//Todos os dados do form recebem as validações
 		<DadosUsuario aoEnviar={coletarDados} validacoes={validacoes} />,
 		<DadosPessoais aoEnviar={coletarDados} validacoes={validacoes}  />,
 		<DadosEntrega aoEnviar={coletarDados} validacoes={validacoes} />,
