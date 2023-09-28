@@ -7,7 +7,11 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 	const [cpf, setCpf] = useState("");
 	const [promocoes, setPromocoes] = useState(true);
 	const [novidades, setNovidades] = useState(false);
-	const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
+
+	const [erros, setErros] = useState({
+		cpf: { valido: true, texto: "" },
+		nome: { valido: true, texto: "" },
+	});
 
 	//Função versátil
 	function validarCampos(event) {
@@ -17,11 +21,22 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 		setErros(novoEstado);
 	}
 
+	function possoEnviar() {
+		for (let campo in erros) {
+			if (!erros[campo].valido) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	return (
 		<form
 			onSubmit={(event) => {
 				event.preventDefault();
-				aoEnviar({ nome, sobrenome, cpf, novidades, promocoes });
+				if (possoEnviar()) {
+					aoEnviar({ nome, sobrenome, cpf, novidades, promocoes });
+				}
 			}}
 		>
 			<TextField
@@ -29,7 +44,11 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 				onChange={(event) => {
 					setNome(event.target.value);
 				}}
+				onBlur={validarCampos}
+				error={!erros.nome.valido}
+				helperText={erros.nome.texto}
 				id="nome"
+				name="nome"
 				label="Nome"
 				variant="outlined"
 				margin="normal"
@@ -91,7 +110,7 @@ function DadosPessoais({ aoEnviar, validacoes }) {
 			/>
 
 			<Button type="submit" variant="contained" color="primary">
-				Cadastrar
+				Próximo
 			</Button>
 		</form>
 	);

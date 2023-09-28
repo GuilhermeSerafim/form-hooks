@@ -62,7 +62,7 @@ function DadosUsuario({ aoEnviar, validacoes }) {
 				fullWidth
 			/>
 			<Button type="submit" variant="contained" color="primary">
-				Cadastrar
+				Próximo
 			</Button>
 		</form>
 	);
