@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Typography } from "@material-ui/core";
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
@@ -10,8 +9,8 @@ function FormularioCadastro({ aoEnviar, validarCPF }) {
 
 	const formularios = [
 		<DadosUsuario aoEnviar={proximo} />,
-		<DadosPessoais aoEnviar={proximo} />,
-		<DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />
+		<DadosPessoais aoEnviar={proximo} validarCPF={validarCPF} />,
+		<DadosEntrega aoEnviar={aoEnviar} />,
 	];
 
 	function proximo() {
