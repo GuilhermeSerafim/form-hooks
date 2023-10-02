@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 //Quem usar esse hook vai ter acesso ao estado do erro, e a função de validarCampos
 //Hook customizado
+
+
 //Ou seja, independente das validacoes que eu tiver, ele vai criar um campo aqui falando que é valido e tem um texto vazio
 function useErros(validacoes) {
     const estadoInicial = criarEstadoInicial(validacoes);
