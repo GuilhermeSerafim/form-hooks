@@ -6,6 +6,7 @@ import { Step, StepLabel, Stepper, Typography } from "@material-ui/core";
 import PaginaDeAgradecimento from "./PaginaDeAgradecimento";
 
 //Esse formulario de cadastro que vai controlar os dados, logo jogamos os dados para outro componente
+//Ele só é para gerenciamento de estados (o que está sendo renderizado e quando está sendo renderizado)
 function FormularioCadastro({ aoEnviar }) {
 	const [etapaAtual, setEtapaAtual] = useState(0); //Por enquanto está estática
 	const [dadosColetados, setDados] = useState({});
