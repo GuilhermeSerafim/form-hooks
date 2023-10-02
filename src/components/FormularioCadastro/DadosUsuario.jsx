@@ -9,18 +9,7 @@ function DadosUsuario({ aoEnviar }) {
 	const [email, setEmail] = useState("");
 	const [senha, setSenha] = useState("");
 	const validacoes = useContext(ValidacoesCadastro)
-	const [erros, validarCampos] = useErros(validacoes);	
-
-
-	// Percorre os campos no objeto erros e, se encontrar pelo menos um campo inválido (ou seja, com valido igual a false), a função retorna false, indicando que o formulário não pode ser enviado.
-	function possoEnviar() {
-		for (let campo in erros) {
-			if (!erros[campo].valido) {
-				return false;
-			}
-		}
-		return true;
-	}
+	const [erros, validarCampos, possoEnviar] = useErros(validacoes);	
 
 
 	return (

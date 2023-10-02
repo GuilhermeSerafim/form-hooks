@@ -13,7 +13,17 @@ function useErros(validacoes) {
         setErros(novoEstado);
     }
 
-    return [erros, validarCampos];
+    // Percorre os campos no objeto erros e, se encontrar pelo menos um campo inválido (ou seja, com valido igual a false), a função retorna false, indicando que o formulário não pode ser enviado.
+	function possoEnviar() {
+		for (let campo in erros) {
+			if (!erros[campo].valido) {
+				return false;
+			}
+		}
+		return true;
+	}
+    
+    return [erros, validarCampos, possoEnviar];
 }
 
 function criarEstadoInicial(validacoes) {
