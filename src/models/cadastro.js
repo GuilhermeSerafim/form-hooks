@@ -15,4 +15,4 @@ function validarSenha(senha) {
     }
 }
 
-export {validarCPF, validarSenha};
+export { validarCPF, validarSenha };
