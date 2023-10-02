@@ -3,20 +3,16 @@ import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import ValidacoesCadastro from "../../contexts/ValidacoesCadastro";
+import useErros from "../../hooks/useErros";
 
 function DadosUsuario({ aoEnviar }) {
 	const [email, setEmail] = useState("");
 	const [senha, setSenha] = useState("");
-	const [erros, setErros] = useState({ senha: { valido: true, texto: "" } });
-
-
 	const validacoes = useContext(ValidacoesCadastro)
-	function validarCampos(event) {
-		const { name, value } = event.target;
-		const novoEstado = { ...erros };
-		novoEstado[name] = validacoes[name](value);
-		setErros(novoEstado);
-	}
+	const [erros, validarCampos] = useErros(validacoes);	
+
+
+	// Percorre os campos no objeto erros e, se encontrar pelo menos um campo inválido (ou seja, com valido igual a false), a função retorna false, indicando que o formulário não pode ser enviado.
 	function possoEnviar() {
 		for (let campo in erros) {
 			if (!erros[campo].valido) {
@@ -25,6 +21,8 @@ function DadosUsuario({ aoEnviar }) {
 		}
 		return true;
 	}
+
+
 	return (
 		<form
 			onSubmit={(event) => {
